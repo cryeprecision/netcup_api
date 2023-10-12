@@ -15,3 +15,4 @@ It 👉**follows**👉 this ☝🏻🤓**technical**☝🏻🤓 📃**document**
 ## References
 
 - <https://github.com/spomjaksilp/netcup-dyndns>
+- <https://helpcenter.netcup.com/de/wiki/general/unsere-api/#anmerkungen-zu-json-requests>

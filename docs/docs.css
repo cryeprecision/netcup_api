@@ -1,41 +1,30 @@
 body {
-  font-family: Calibri, Arial;
   background-color: #171717;
   color: rgb(207, 207, 207);
 }
+
 .pre {
-  font-family: Courier;
+  font-family: monospace;
 }
-.normal {
-  font-family: Calibri, Arial;
-}
+
 .bold {
   font-weight: bold;
 }
-h1,
-h2,
-h3 {
-  font-family: Verdana, Times;
-}
-h1 {
-  border-bottom: 1px solid gray;
-}
-h2 {
-  border-bottom: 1px solid silver;
-}
-h3 {
-  border-bottom: 1px dashed silver;
-}
+
 a {
-  text-decoration: none;
-  color: rgb(255, 92, 149);
+  color: #ff5c95;
+  text-decoration: underline solid 2px white;
+  text-underline-offset: 2px;
 }
+
 a:hover {
-  text-decoration: underline;
+  color: white;
 }
+
 .blue {
   color: #49ffe7;
 }
+
 .lightBlue {
   color: #5dff54;
 }
