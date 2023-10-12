@@ -1,0 +1,3503 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
+    />
+    <link rel="stylesheet" href="docs.css" />
+    <title>DomainWebservice interface description</title>
+  </head>
+  <body>
+    <h1>DomainWebservice SOAP WebService interface description</h1>
+    <p>
+      Webservice Endpoint URI:
+      <span class="pre"
+        >https://ccp.netcup.net/run/webservice/servers/endpoint.php</span
+      >
+    </p>
+    <p>
+      WSDL URI:
+      <span class="pre"
+        ><a
+          href="https://ccp.netcup.net/run/webservice/servers/endpoint.php?WSDL&readable"
+          >https://ccp.netcup.net/run/webservice/servers/endpoint.php?WSDL</a
+        ></span
+      >
+    </p>
+    <p>
+      Rest Json URI:
+      <span class="pre"
+        >https://ccp.netcup.net/run/webservice/servers/endpoint.php?JSON</span
+      >
+    </p>
+    <br />
+    <p>
+      PHP SOAP client example download URI:
+      <span class="pre"
+        ><a
+          href="https://ccp.netcup.net/run/webservice/servers/endpoint.php?PHPSOAPCLIENT"
+          >https://ccp.netcup.net/run/webservice/servers/endpoint.php?PHPSOAPCLIENT</a
+        ></span
+      >
+    </p>
+    <br /><br />
+    <p>
+      Please see our
+      <a
+        href="https://www.netcup-wiki.de/wiki/Domainreselling_API"
+        target="_blank"
+        >Wiki for more information</a
+      >
+    </p>
+    <div class="noprint">
+      <h2>Index</h2>
+      <p>API functions:</p>
+      <ul>
+        <li>
+          <a href="#ackpoll"><span class="pre">ackpoll</span></a>
+        </li>
+        <li>
+          <a href="#cancelDomain"><span class="pre">cancelDomain</span></a>
+        </li>
+        <li>
+          <a href="#changeOwnerDomain"
+            ><span class="pre">changeOwnerDomain</span></a
+          >
+        </li>
+        <li>
+          <a href="#createDomain"><span class="pre">createDomain</span></a>
+        </li>
+        <li>
+          <a href="#createHandle"><span class="pre">createHandle</span></a>
+        </li>
+        <li>
+          <a href="#deleteHandle"><span class="pre">deleteHandle</span></a>
+        </li>
+        <li>
+          <a href="#getAuthcodeDomain"
+            ><span class="pre">getAuthcodeDomain</span></a
+          >
+        </li>
+        <li>
+          <a href="#infoDnsRecords"><span class="pre">infoDnsRecords</span></a>
+        </li>
+        <li>
+          <a href="#infoDnsZone"><span class="pre">infoDnsZone</span></a>
+        </li>
+        <li>
+          <a href="#infoDomain"><span class="pre">infoDomain</span></a>
+        </li>
+        <li>
+          <a href="#infoHandle"><span class="pre">infoHandle</span></a>
+        </li>
+        <li>
+          <a href="#listallDomains"><span class="pre">listallDomains</span></a>
+        </li>
+        <li>
+          <a href="#listallHandle"><span class="pre">listallHandle</span></a>
+        </li>
+        <li>
+          <a href="#login"><span class="pre">login</span></a>
+        </li>
+        <li>
+          <a href="#logout"><span class="pre">logout</span></a>
+        </li>
+        <li>
+          <a href="#poll"><span class="pre">poll</span></a>
+        </li>
+        <li>
+          <a href="#priceTopleveldomain"
+            ><span class="pre">priceTopleveldomain</span></a
+          >
+        </li>
+        <li>
+          <a href="#transferDomain"><span class="pre">transferDomain</span></a>
+        </li>
+        <li>
+          <a href="#updateDnsRecords"
+            ><span class="pre">updateDnsRecords</span></a
+          >
+        </li>
+        <li>
+          <a href="#updateDnsZone"><span class="pre">updateDnsZone</span></a>
+        </li>
+        <li>
+          <a href="#updateDomain"><span class="pre">updateDomain</span></a>
+        </li>
+        <li>
+          <a href="#updateHandle"><span class="pre">updateHandle</span></a>
+        </li>
+      </ul>
+      <p>Exported types:</p>
+      <ul>
+        <li>
+          <a href="#ArrayOPollObject"
+            ><span class="pre">ArrayOPollObject</span></a
+          >
+        </li>
+        <li>
+          <a href="#ArrayOfDnsrecord"
+            ><span class="pre">ArrayOfDnsrecord</span></a
+          >
+        </li>
+        <li>
+          <a href="#ArrayOfInt"><span class="pre">ArrayOfInt</span></a>
+        </li>
+        <li>
+          <a href="#ArrayOfOptionalhandleattributes"
+            ><span class="pre">ArrayOfOptionalhandleattributes</span></a
+          >
+        </li>
+        <li>
+          <a href="#ArrayOfString"><span class="pre">ArrayOfString</span></a>
+        </li>
+        <li>
+          <a href="#ArrayOfpositiveInteger"
+            ><span class="pre">ArrayOfpositiveInteger</span></a
+          >
+        </li>
+        <li>
+          <a href="#Contactentries"><span class="pre">Contactentries</span></a>
+        </li>
+        <li>
+          <a href="#Dnsrecord"><span class="pre">Dnsrecord</span></a>
+        </li>
+        <li>
+          <a href="#Dnsrecordset"><span class="pre">Dnsrecordset</span></a>
+        </li>
+        <li>
+          <a href="#DnssecentriesObject"
+            ><span class="pre">DnssecentriesObject</span></a
+          >
+        </li>
+        <li>
+          <a href="#DnssecentryObject"
+            ><span class="pre">DnssecentryObject</span></a
+          >
+        </li>
+        <li>
+          <a href="#Dnszone"><span class="pre">Dnszone</span></a>
+        </li>
+        <li>
+          <a href="#DomainObject"><span class="pre">DomainObject</span></a>
+        </li>
+        <li>
+          <a href="#HandleObject"><span class="pre">HandleObject</span></a>
+        </li>
+        <li>
+          <a href="#Nameserverentries"
+            ><span class="pre">Nameserverentries</span></a
+          >
+        </li>
+        <li>
+          <a href="#Nameserverentry"
+            ><span class="pre">Nameserverentry</span></a
+          >
+        </li>
+        <li>
+          <a href="#Optionalhandleattribute"
+            ><span class="pre">Optionalhandleattribute</span></a
+          >
+        </li>
+        <li>
+          <a href="#PollObject"><span class="pre">PollObject</span></a>
+        </li>
+        <li>
+          <a href="#Registrycontacts"
+            ><span class="pre">Registrycontacts</span></a
+          >
+        </li>
+        <li>
+          <a href="#Responsemessage"
+            ><span class="pre">Responsemessage</span></a
+          >
+        </li>
+        <li>
+          <a href="#SessionObject"><span class="pre">SessionObject</span></a>
+        </li>
+        <li>
+          <a href="#TopleveldomainObject"
+            ><span class="pre">TopleveldomainObject</span></a
+          >
+        </li>
+      </ul>
+    </div>
+    <h2>API functions</h2>
+    <h3>ackpoll</h3>
+    <a name="ackpoll"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">ackpoll</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">apilogid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Acknowledge log message from call made via API.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">apilogid</span><br /><span class="normal"
+          >ID of message to mark as read.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>cancelDomain</h3>
+    <a name="cancelDomain"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">cancelDomain</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">domainname</span></a
+      >
+      <span class="bold">domainname</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Cancel Domain. Current Owner has to allow or deny the termination by
+      clicking a link that is sent to him via e-mail.<br />
+      Process ends after 5 days if not answered.<br />
+      Inclusive domains that were ordered with a hosting product have to be
+      canceled with this product.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">domainname</span><br /><span class="normal"
+          >Name of the domain including top-level domain.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>changeOwnerDomain</h3>
+    <a name="changeOwnerDomain"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span>
+      <span class="bold">changeOwnerDomain</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">integer</span>
+      <span class="bold">new_handle_id</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">domainname</span></a
+      >
+      <span class="bold">domainname</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Change Ownerhandle. Current Owner has to allow or deny the ownerchange by
+      clicking a link that is sent to him via e-mail.<br />
+      Process ends after 5 days if not answered.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">integer</span> <span class="bold">new_handle_id</span
+        ><br /><span class="normal"
+          >Handle ID of the contact that should be the new owner.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">domainname</span><br /><span class="normal"
+          >Name of the domain including top-level domain.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>createDomain</h3>
+    <a name="createDomain"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">createDomain</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">domainname</span></a
+      >
+      <span class="bold">domainname</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Contactentries"
+        ><span class="blue">Contactentries</span></a
+      >
+      <span class="bold">contacts</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Nameserverentries"
+        ><span class="blue">Nameserverentries</span></a
+      >
+      <span class="bold">nameservers</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Create a new domain for a fee.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">domainname</span><br /><span class="normal"
+          >Name of the domain including top-level domain.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="#Contactentries"><span class="blue">Contactentries</span></a>
+        <span class="bold">contacts</span><br /><span class="normal"
+          >Ids of the contact handles registered previously. Format like this:
+          $assignedhandletypes_obj = new Contactentries();
+          $assignedhandletypes_obj-&gt;ownerc = 111;
+          $assignedhandletypes_obj-&gt;adminc = 222;</span
+        >
+      </li>
+      <li class="pre">
+        <a href="#Nameserverentries"
+          ><span class="blue">Nameserverentries</span></a
+        >
+        <span class="bold">nameservers</span><br /><span class="normal"
+          >object of nameservers. Please define as object in format for example:
+          $nameservers = new Nameserverentries(); $nameserverentry1 = new
+          Nameserverentry(); $nameserverentry1-&gt;hostname =
+          &quot;ns1.nameserverdomain.de&quot;; $nameserverentry1-&gt;ipv4 =
+          &quot;12.34.56.78&quot;; $nameserverentry1-&gt;ipv6 =
+          &quot;123:0000:4:5600::8&quot;; $nameservers-&gt;nameserver1 =
+          $nameserverentry1; $nameserverentry2 = new Nameserverentry();
+          $nameserverentry2-&gt;hostname = &quot;ns2.nameserverdomain.de&quot;;
+          $nameserverentry2-&gt;ipv4 = &quot;12.34.56.178&quot;;
+          $nameserverentry2-&gt;ipv6 = &quot;123:0000:4:5600::7&quot;;
+          $nameservers-&gt;nameserver2 = $nameserverentry2;</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>createHandle</h3>
+    <a name="createHandle"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">createHandle</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">handletyp</span></a
+      >
+      <span class="bold">type</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">max80chars</span></a
+      >
+      <span class="bold">name</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">organisation</span></a
+      >
+      <span class="bold">organisation</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">max63chars</span></a
+      >
+      <span class="bold">street</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">max12chars</span></a
+      >
+      <span class="bold">postalcode</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">max63chars</span></a
+      >
+      <span class="bold">city</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">countrycode2char</span></a
+      >
+      <span class="bold">countrycode</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">telephone</span></a
+      >
+      <span class="bold">telephone</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">email</span></a
+      >
+      <span class="bold">email</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#ArrayOfOptionalhandleattributes"
+        ><span class="blue">ArrayOfOptionalhandleattributes</span></a
+      >
+      <span class="bold">optionalhandleattributes</span><br />
+      )
+    </p>
+    <p>
+      Create a contact handle in data base. Contact handles are mandatory for
+      ordering domains.<br />
+      Fields type, name and organisation can not be changed by an update.<br />
+      Field email can not be changed if domain is used at a global top-level
+      domain.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"><span class="blue">handletyp</span></a>
+        <span class="bold">type</span><br /><span class="normal"
+          >type of the handle like organisation or person</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">max80chars</span></a
+        >
+        <span class="bold">name</span><br /><span class="normal"
+          >full name of the contact.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">organisation</span></a
+        >
+        <span class="bold">organisation</span><br /><span class="normal"
+          >organisation like company name.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">max63chars</span></a
+        >
+        <span class="bold">street</span><br /><span class="normal">street</span>
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">max12chars</span></a
+        >
+        <span class="bold">postalcode</span><br /><span class="normal"
+          >postal code</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">max63chars</span></a
+        >
+        <span class="bold">city</span><br /><span class="normal">city</span>
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">countrycode2char</span></a
+        >
+        <span class="bold">countrycode</span><br /><span class="normal"
+          >countrycode in ISO 3166 ALPHA-2 format. 2 char codes like CH for
+          Switzerland.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"><span class="blue">telephone</span></a>
+        <span class="bold">telephone</span><br /><span class="normal"
+          >telephone number</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"><span class="blue">email</span></a>
+        <span class="bold">email</span><br /><span class="normal"
+          >email address</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="#ArrayOfOptionalhandleattributes"
+          ><span class="blue">ArrayOfOptionalhandleattributes</span></a
+        >
+        <span class="bold">optionalhandleattributes</span><br /><span
+          class="normal"
+          >Optional handle attributes as array of Optionalhandleattribute.
+          Please define in format for example: $optionalhandleattribute = new
+          Optionalhandleattribute(); $optionalhandleattribute-&gt;item =
+          'state'; $optionalhandleattribute-&gt;value =
+          UtilityText::utf8Encode(&quot;Bayern&quot;);
+          $optionalhandleattributes[] = $optionalhandleattribute;
+          $optionalhandleattribute = new Optionalhandleattribute();
+          $optionalhandleattribute-&gt;item = 'handlecomment';
+          $optionalhandleattribute-&gt;value =
+          UtilityText::utf8Encode(&quot;Important customer&quot;);
+          $optionalhandleattributes[] = $optionalhandleattribute; Possible
+          values are: &quot;fax&quot; fax number in format +49.12345678,
+          &quot;state&quot; max40chars state for example Sachsen,
+          &quot;handlecomment&quot; max80chars comment for the handle. Value
+          will not be transfered to any registry., &quot;birthdate&quot;
+          dateformatyyyymmdd date of birth in format YYYY-MM-DD,
+          &quot;birthplace&quot; max70chars place of birth,
+          &quot;birthcountrycountrycode&quot; countrycode2char country of birth,
+          &quot;birthstate&quot; max63chars state of birth,
+          &quot;birthplacepostalcode&quot; max12chars place of the postcode,
+          &quot;registrationnumber&quot; max70chars registernumber,
+          &quot;idcardnumber&quot; max70chars passportnumber,
+          &quot;idcardissuedate&quot; dateformatyyyymmdd passport date of issue
+          in format YYYY-MM-DD, &quot;idcardissueauthority&quot; max70chars
+          passport issuing authority, &quot;taxnumber&quot; max70chars tax
+          number, &quot;vatnumber&quot; max70chars sales tax number,
+          &quot;aeroensid&quot; max70chars aeroensid mandatory for .aero
+          domains, &quot;aeroenspassword&quot; max70chars aeroenspassword
+          mandatory for .aero domains, &quot;xxxmemberid&quot; max20chars
+          xxxmemberid mandatory for .xxx domains, &quot;xxxmemberpasswort&quot;
+          max20chars xxxmemberpasswort mandatory for .xxx domains,
+          &quot;proprofession&quot; max70chars profession mandatory for .pro
+          domains, &quot;traveluin&quot; max20chars traveluin mandatory for
+          .travel domains, &quot;trademarknumber&quot; max80chars brandnumber,
+          &quot;trademarkcountrycode&quot; countrycode2char registry place of
+          the brand, &quot;coopverificationcode&quot; max20chars
+          coopverificationcode, &quot;asiatypeofentity&quot; asiatypeofentity
+          type of legal peronality mandatory for .asia domains. Allowed values
+          are: naturalPerson, corporation, cooperative, partnership, government,
+          politicalParty, society, institution, &quot;asiaformofidentity&quot;
+          asiaformofidentity form of identity mandatory for .asia domains
+          Allowed values are: certificate, legislation, passport,
+          politicalPartyRegistry, societyRegistry, &quot;asiaidentnumber&quot;
+          max255chars identificationnumber mandatory for .asia domains,
+          &quot;jobstitelposition&quot; max70chars title or position mandatory
+          for .jobs domains, &quot;jobswebsite&quot; url URL of website
+          mandatory for .jobs domains, &quot;jobsindustrytype&quot; max128chars
+          type of company mandatory for .jobs domains,
+          &quot;jobscontactisadmin&quot; yesno Yes or No mandatory for .jobs
+          domains, &quot;jobsassociationmember&quot; yesno Yes or No mandatory
+          for .jobs domains, &quot;esnumbertype&quot; esnumbertype
+          NIF/NIE/DNI-number type mandatory for .es domains,
+          &quot;esnifnienumber&quot; max70chars NIF/NIE/DNI-number mandatory for
+          .es domains, &quot;uritemplate&quot; uritemplate Contact for .de
+          Domains that starts either with mailto:email@domain.tld or a URL to a
+          contact form. You can add {Alabel} (ACE-String) or {Ulabel}
+          (UTF-8-String) that contains domain name including top-level domain.,
+          &quot;countryofcitizenshipcountrycode&quot; countrycode2char country
+          of countryofcitizenship, &quot;nexusCategory&quot; nexus category C11,
+          C12, C21, C31, C32 mandatory for .us domains</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>deleteHandle</h3>
+    <a name="deleteHandle"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">deleteHandle</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">handle_id</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Delete a contact handle in data base.<br />
+      You can only delete a handle in the netcup database, if it is not used
+      with a domain.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">handle_id</span><br /><span class="normal"
+          >Id of the contact.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>getAuthcodeDomain</h3>
+    <a name="getAuthcodeDomain"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span>
+      <span class="bold">getAuthcodeDomain</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">domainname</span></a
+      >
+      <span class="bold">domainname</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Get auth info for domain.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">domainname</span><br /><span class="normal"
+          >Name of the domain including top-level domain.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>infoDnsRecords</h3>
+    <a name="infoDnsRecords"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span>
+      <span class="bold">infoDnsRecords</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">domainname</span></a
+      >
+      <span class="bold">domainname</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Get all records of a zone.<br />
+      Zone must be owned by customer.
+    </p>
+    <ul>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">domainname</span><br /><span class="normal"
+          >Name of the domain including top-level domain.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>infoDnsZone</h3>
+    <a name="infoDnsZone"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">infoDnsZone</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">domainname</span></a
+      >
+      <span class="bold">domainname</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Get information about dns zone in local nameservers.<br />
+      Zone must be owned by reseller.
+    </p>
+    <ul>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">domainname</span><br /><span class="normal"
+          >Name of the domain including top-level domain.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>infoDomain</h3>
+    <a name="infoDomain"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">infoDomain</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">domainname</span></a
+      >
+      <span class="bold">domainname</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">registryinformationflag</span></a
+      >
+      <span class="bold">registryinformationflag</span><br />
+      )
+    </p>
+    <p>
+      Info Domain. Get Information about domain. All avaliable information for
+      own domains. Status for other domains.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">domainname</span><br /><span class="normal"
+          >Name of the domain including top-level domain.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">registryinformationflag</span></a
+        >
+        <span class="bold">registryinformationflag</span><br /><span
+          class="normal"
+          >TRUE getinformation from registry (may be
+          limited)|registryinformationflag FALSE get information from netcup
+          data base only. Field is optional. Default FALSE.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage Responsemessage with information about result of the
+      action like short and long resultmessages, message status, etc.
+    </p>
+    <h3>infoHandle</h3>
+    <a name="infoHandle"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">infoHandle</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">handle_id</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Get Information about a handle.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">handle_id</span><br /><span class="normal"
+          >Id of the contact</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>listallDomains</h3>
+    <a name="listallDomains"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span>
+      <span class="bold">listallDomains</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Get information about all domains that a customer owns. For detailed
+      information please use infoDomain<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc. Contains DomainObject
+      objects in responsedata field.
+    </p>
+    <h3>listallHandle</h3>
+    <a name="listallHandle"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">listallHandle</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Get ids and name of all handles of a user. If Organisation is set, also
+      value of organisation field.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>login</h3>
+    <a name="login"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">login</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apipassword</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Create a login session for API users.<br />
+      A login has to be send before each request.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apipassword</span
+        ><br /><span class="normal"
+          >API password set in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc. In responsedata field:
+      string $apisessionid Server generated ID to be used with further requests
+      when login was successful.
+    </p>
+    <h3>logout</h3>
+    <a name="logout"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">logout</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      End session for API user.<br />
+      A login has to be send before each request.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>poll</h3>
+    <a name="poll"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">poll</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">messagecount</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Get all messages that are not read.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">messagecount</span><br /><span class="normal"
+          >maximum number of unread messages to receive.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc. In responsedata field:
+      ArrayOPollObject Unread Messages for this customer.
+    </p>
+    <h3>priceTopleveldomain</h3>
+    <a name="priceTopleveldomain"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span>
+      <span class="bold">priceTopleveldomain</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">topleveldomain</span></a
+      >
+      <span class="bold">topleveldomain</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Get price for a top-level domain.<br />
+      Current discounts are considered, but can be limited by time or amount.<br />
+      Prices for premium domains can be higher.<br />
+      This function is avaliable for domain resellers.<br />
+      Transfers between netcup customers can result in addional costs for
+      ownerchanges. See customer control panel.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">topleveldomain</span></a
+        >
+        <span class="bold">topleveldomain</span><br /><span class="normal"
+          >Name of the top-level domain without dot. For example de.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc. Contains
+      TopleveldomainObject objects in responsedata field.
+    </p>
+    <h3>transferDomain</h3>
+    <a name="transferDomain"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span>
+      <span class="bold">transferDomain</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">domainname</span></a
+      >
+      <span class="bold">domainname</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Contactentries"
+        ><span class="blue">Contactentries</span></a
+      >
+      <span class="bold">contacts</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Nameserverentries"
+        ><span class="blue">Nameserverentries</span></a
+      >
+      <span class="bold">nameservers</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">authcode</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span><br />
+      )
+    </p>
+    <p>
+      Incomming transfer a new domain for a fee.<br />
+      This function is avaliable for domain resellers.<br />
+      Transfers between netcup customers can result in addional costs for
+      ownerchanges. See customer control panel.
+    </p>
+    <ul>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">domainname</span><br /><span class="normal"
+          >Name of the domain including top-level domain.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="#Contactentries"><span class="blue">Contactentries</span></a>
+        <span class="bold">contacts</span><br /><span class="normal"
+          >Ids of the contact handles registered previously. Format like this:
+          $assignedhandletypes_obj = new Contactentries();
+          $assignedhandletypes_obj-&gt;ownerc = 111;
+          $assignedhandletypes_obj-&gt;adminc = 222;</span
+        >
+      </li>
+      <li class="pre">
+        <a href="#Nameserverentries"
+          ><span class="blue">Nameserverentries</span></a
+        >
+        <span class="bold">nameservers</span><br /><span class="normal"
+          >object of nameservers. Please define as object in format for example:
+          $nameservers = new Nameserverentries(); $nameserverentry1 = new
+          Nameserverentry(); $nameserverentry1-&gt;hostname =
+          &quot;ns1.nameserverdomain.de&quot;; $nameserverentry1-&gt;ipv4 =
+          &quot;12.34.56.78&quot;; $nameserverentry1-&gt;ipv6 =
+          &quot;123:0000:4:5600::8&quot;; $nameservers-&gt;nameserver1 =
+          $nameserverentry1; $nameserverentry2 = new Nameserverentry();
+          $nameserverentry2-&gt;hostname = &quot;ns2.nameserverdomain.de&quot;;
+          $nameserverentry2-&gt;ipv4 = &quot;12.34.56.178&quot;;
+          $nameserverentry2-&gt;ipv6 = &quot;123:0000:4:5600::7&quot;;
+          $nameservers-&gt;nameserver2 = $nameserverentry2;</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">authcode</span
+        ><br /><span class="normal">AuthInfo code for this domain.</span>
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>updateDnsRecords</h3>
+    <a name="updateDnsRecords"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span>
+      <span class="bold">updateDnsRecords</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">domainname</span></a
+      >
+      <span class="bold">domainname</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dnsrecordset"
+        ><span class="blue">Dnsrecordset</span></a
+      >
+      <span class="bold">dnsrecordset</span><br />
+      )
+    </p>
+    <p>
+      Update DNS records of a zone. Deletion of other records is optional.<br />
+      When DNSSEC is active, the zone is updated in the nameserver with zone
+      resign after a few minutes.
+    </p>
+    <ul>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">domainname</span><br /><span class="normal"
+          >Name of the domain including top-level domain.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="#Dnsrecordset"><span class="blue">Dnsrecordset</span></a>
+        <span class="bold">dnsrecordset</span><br /><span class="normal"
+          >Object that contains DNS Records.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>updateDnsZone</h3>
+    <a name="updateDnsZone"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">updateDnsZone</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">domainname</span></a
+      >
+      <span class="bold">domainname</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Dnszone"
+        ><span class="blue">Dnszone</span></a
+      >
+      <span class="bold">dnszone</span><br />
+      )
+    </p>
+    <p>
+      Update DNS zone.<br />
+      When DNSSEC is active, the zone is updated in the nameserver with zone
+      resign after a few minutes.
+    </p>
+    <ul>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">domainname</span><br /><span class="normal"
+          >Name of the domain including top-level domain.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="#Dnszone"><span class="blue">Dnszone</span></a>
+        <span class="bold">dnszone</span><br /><span class="normal"
+          >Object that contains settings for DNS zone.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>updateDomain</h3>
+    <a name="updateDomain"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">updateDomain</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">domainname</span></a
+      >
+      <span class="bold">domainname</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Contactentries"
+        ><span class="blue">Contactentries</span></a
+      >
+      <span class="bold">contacts</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Nameserverentries"
+        ><span class="blue">Nameserverentries</span></a
+      >
+      <span class="bold">nameservers</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">keepdnssecrecords</span></a
+      >
+      <span class="bold">keepdnssecrecords</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#DnssecentriesObject"
+        ><span class="blue">DnssecentriesObject</span></a
+      >
+      <span class="bold">dnssecentries</span><br />
+      )
+    </p>
+    <p>
+      Update a domain contacts and nameserver settings.<br />
+      For updateing owner handle use changeOwnerDomain.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">domainname</span><br /><span class="normal"
+          >Name of the domain including top-level domain.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="#Contactentries"><span class="blue">Contactentries</span></a>
+        <span class="bold">contacts</span><br /><span class="normal"
+          >Ids of the contact handles registered previously.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="#Nameserverentries"
+          ><span class="blue">Nameserverentries</span></a
+        >
+        <span class="bold">nameservers</span><br /><span class="normal"
+          >object of nameservers. Please define as object in format for example:
+          $nameservers = new Nameserverentries(); $nameserverentry1 = new
+          Nameserverentry(); $nameserverentry1-&gt;hostname =
+          &quot;ns1.nameserverdomain.de&quot;; $nameserverentry1-&gt;ipv4 =
+          &quot;12.34.56.78&quot;; $nameserverentry1-&gt;ipv6 =
+          &quot;123:0000:4:5600::8&quot;; $nameservers-&gt;nameserver1 =
+          $nameserverentry1; $nameserverentry2 = new Nameserverentry();
+          $nameserverentry2-&gt;hostname = &quot;ns2.nameserverdomain.de&quot;;
+          $nameserverentry2-&gt;ipv4 = &quot;12.34.56.178&quot;;
+          $nameserverentry2-&gt;ipv6 = &quot;123:0000:4:5600::7&quot;;
+          $nameservers-&gt;nameserver2 = $nameserverentry2;</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">keepdnssecrecords</span></a
+        >
+        <span class="bold">keepdnssecrecords</span><br /><span class="normal"
+          >TRUE Saved DNSSEC records will be preserved|keepdnssecrecords FALSE
+          Saved DNSSEC records will be deleted. Information is only relevant if
+          you use DNSSEC. Field is optional. Default FALSE.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="#DnssecentriesObject"
+          ><span class="blue">DnssecentriesObject</span></a
+        >
+        <span class="bold">dnssecentries</span><br /><span class="normal"
+          >DNSSEC entries for a domain Field is optional.</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h3>updateHandle</h3>
+    <a name="updateHandle"></a>
+    <p class="pre">
+      <a href="#Responsemessage"> <span class="blue">Responsemessage</span></a>
+      <span class="bold"></span> <span class="bold">updateHandle</span> (<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">customernumber</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apikey</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">string</span>
+      <span class="bold">apisessionid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">positiveInteger</span>
+      <span class="bold">handle_id</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">handletyp</span></a
+      >
+      <span class="bold">type</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">max80chars</span></a
+      >
+      <span class="bold">name</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">organisation</span></a
+      >
+      <span class="bold">organisation</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">max63chars</span></a
+      >
+      <span class="bold">street</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">max12chars</span></a
+      >
+      <span class="bold">postalcode</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">max63chars</span></a
+      >
+      <span class="bold">city</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">countrycode2char</span></a
+      >
+      <span class="bold">countrycode</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">telephone</span></a
+      >
+      <span class="bold">telephone</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">email</span></a
+      >
+      <span class="bold">email</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="../xsd/simpletypes.xsd"
+        ><span class="blue">clientrequestid</span></a
+      >
+      <span class="bold">clientrequestid</span>, <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#ArrayOfOptionalhandleattributes"
+        ><span class="blue">ArrayOfOptionalhandleattributes</span></a
+      >
+      <span class="bold">optionalhandleattributes</span><br />
+      )
+    </p>
+    <p>
+      Update a existing contact handle in data base and at registries where it
+      is used.<br />
+      Handle is created at a registry as soon as it is used.<br />
+      This function is avaliable for domain resellers.
+    </p>
+    <ul>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span><br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apikey</span
+        ><br /><span class="normal"
+          >Unique API key generated in customer control panel.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">string</span> <span class="bold">apisessionid</span
+        ><br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+      <li class="pre">
+        <span class="blue">positiveInteger</span>
+        <span class="bold">handle_id</span><br /><span class="normal"
+          >Id of the contact that will be updated.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"><span class="blue">handletyp</span></a>
+        <span class="bold">type</span><br /><span class="normal"
+          >type of the handle like organisation or person</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">max80chars</span></a
+        >
+        <span class="bold">name</span><br /><span class="normal"
+          >full name of the contact.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">organisation</span></a
+        >
+        <span class="bold">organisation</span><br /><span class="normal"
+          >organisation like company name.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">max63chars</span></a
+        >
+        <span class="bold">street</span><br /><span class="normal">street</span>
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">max12chars</span></a
+        >
+        <span class="bold">postalcode</span><br /><span class="normal"
+          >postcode</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">max63chars</span></a
+        >
+        <span class="bold">city</span><br /><span class="normal">city</span>
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">countrycode2char</span></a
+        >
+        <span class="bold">countrycode</span><br /><span class="normal"
+          >countrycode in ISO 3166 ALPHA-2 format. 2 char codes like CH for
+          Switzerland.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"><span class="blue">telephone</span></a>
+        <span class="bold">telephone</span><br /><span class="normal"
+          >telephone number</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"><span class="blue">email</span></a>
+        <span class="bold">email</span><br /><span class="normal"
+          >email address</span
+        >
+      </li>
+      <li class="pre">
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">clientrequestid</span></a
+        >
+        <span class="bold">clientrequestid</span><br /><span class="normal"
+          >Id from client side. Can contain letters and numbers. Field is
+          optional.</span
+        >
+      </li>
+      <li class="pre">
+        <a href="#ArrayOfOptionalhandleattributes"
+          ><span class="blue">ArrayOfOptionalhandleattributes</span></a
+        >
+        <span class="bold">optionalhandleattributes</span><br /><span
+          class="normal"
+          >Optional handle attributes as array of Optionalhandleattribute.
+          Please define in format for example: $optionalhandleattribute = new
+          Optionalhandleattribute(); $optionalhandleattribute-&gt;item =
+          'state'; $optionalhandleattribute-&gt;value =
+          UtilityText::utf8Encode(&quot;Bayern&quot;);
+          $optionalhandleattributes[] = $optionalhandleattribute;
+          $optionalhandleattribute = new Optionalhandleattribute();
+          $optionalhandleattribute-&gt;item = 'handlecomment';
+          $optionalhandleattribute-&gt;value =
+          UtilityText::utf8Encode(&quot;Important customer&quot;);
+          $optionalhandleattributes[] = $optionalhandleattribute; Possible
+          values are: &quot;fax&quot; fax number in format +49.12345678,
+          &quot;state&quot; max40chars state for example Sachsen,
+          &quot;handlecomment&quot; max80chars comment for the handle. Value
+          will not be transfered to any registry., &quot;birthdate&quot;
+          dateformatyyyymmdd date of birth in format YYYY-MM-DD,
+          &quot;birthplace&quot; max70chars place of birth,
+          &quot;birthcountrycountrycode&quot; countrycode2char country of birth,
+          &quot;birthstate&quot; max63chars state of birth,
+          &quot;birthplacepostalcode&quot; max12chars place of the postcode,
+          &quot;registrationnumber&quot; max70chars registernumber,
+          &quot;idcardnumber&quot; max70chars passportnumber,
+          &quot;idcardissuedate&quot; dateformatyyyymmdd passport date of issue
+          in format YYYY-MM-DD, &quot;idcardissueauthority&quot; max70chars
+          passport issuing authority, &quot;taxnumber&quot; max70chars tax
+          number, &quot;vatnumber&quot; max70chars sales tax number,
+          &quot;aeroensid&quot; max70chars aeroensid mandatory for .aero
+          domains, &quot;aeroenspassword&quot; max70chars aeroenspassword
+          mandatory for .aero domains, &quot;xxxmemberid&quot; max20chars
+          xxxmemberid mandatory for .xxx domains, &quot;xxxmemberpasswort&quot;
+          max20chars xxxmemberpasswort mandatory for .xxx domains,
+          &quot;proprofession&quot; max70chars profession mandatory for .pro
+          domains, &quot;traveluin&quot; max20chars traveluin mandatory for
+          .travel domains, &quot;trademarknumber&quot; max80chars brandnumber,
+          &quot;trademarkcountrycode&quot; countrycode2char registry place of
+          the brand, &quot;coopverificationcode&quot; max20chars
+          coopverificationcode, &quot;asiatypeofentity&quot; asiatypeofentity
+          type of legal peronality mandatory for .asia domains. Allowed values
+          are: naturalPerson, corporation, cooperative, partnership, government,
+          politicalParty, society, institution, &quot;asiaformofidentity&quot;
+          asiaformofidentity form of identity mandatory for .asia domains
+          Allowed values are: certificate, legislation, passport,
+          politicalPartyRegistry, societyRegistry, &quot;asiaidentnumber&quot;
+          max255chars identificationnumber mandatory for .asia domains,
+          &quot;jobstitelposition&quot; max70chars title or position mandatory
+          for .jobs domains, &quot;jobswebsite&quot; url URL of website
+          mandatory for .jobs domains, &quot;jobsindustrytype&quot; max128chars
+          type of company mandatory for .jobs domains,
+          &quot;jobscontactisadmin&quot; yesno Yes or No mandatory for .jobs
+          domains, &quot;jobsassociationmember&quot; yesno Yes or No mandatory
+          for .jobs domains, &quot;esnumbertype&quot; esnumbertype
+          NIF/NIE/DNI-number type mandatory for .es domains,
+          &quot;esnifnienumber&quot; max70chars NIF/NIE/DNI-number mandatory for
+          .es domains, &quot;uritemplate&quot; uritemplate Contact for .de
+          Domains that starts either with mailto:email@domain.tld or a URL to a
+          contact form. You can add {Alabel} (ACE-String) or {Ulabel}
+          (UTF-8-String) that contains domain name including top-level domain.,
+          &quot;countryofcitizenshipcountrycode&quot; countrycode2char country
+          of countryofcitizenship, &quot;nexusCategory&quot; nexus category C11,
+          C12, C21, C31, C32 mandatory for .us domains</span
+        >
+      </li>
+    </ul>
+    <p>
+      Return value
+      <span class="pre"
+        ><a href="#Responsemessage"
+          ><span class="blue">Responsemessage</span></a
+        ></span
+      >: $responsemessage with information about result of the action like short
+      and long resultmessages, message status, etc.
+    </p>
+    <h2>Exported types</h2>
+    <h3>ArrayOPollObject</h3>
+    <a name="ArrayOPollObject"></a>
+    <p>
+      This is an array type of
+      <span class="pre"
+        ><a href="#PollObject"><span class="blue">PollObject</span></a></span
+      >.
+    </p>
+    <p>Array of ArrayOPollObject values</p>
+    <h3>ArrayOfDnsrecord</h3>
+    <a name="ArrayOfDnsrecord"></a>
+    <p>
+      This is an array type of
+      <span class="pre"
+        ><a href="#Dnsrecord"><span class="blue">Dnsrecord</span></a></span
+      >.
+    </p>
+    <p>Array of Dnsrecord values</p>
+    <h3>ArrayOfInt</h3>
+    <a name="ArrayOfInt"></a>
+    <p>
+      This is an array type of
+      <span class="pre"><span class="blue">int</span></span
+      >.
+    </p>
+    <p>Array of inter values</p>
+    <h3>ArrayOfOptionalhandleattributes</h3>
+    <a name="ArrayOfOptionalhandleattributes"></a>
+    <p>
+      This is an array type of
+      <span class="pre"
+        ><a href="#Optionalhandleattribute"
+          ><span class="blue">Optionalhandleattribute</span></a
+        ></span
+      >.
+    </p>
+    <p>An Optionalhandleattribute array type</p>
+    <h3>ArrayOfString</h3>
+    <a name="ArrayOfString"></a>
+    <p>
+      This is an array type of
+      <span class="pre"><span class="blue">string</span></span
+      >.
+    </p>
+    <p>An string array type</p>
+    <h3>ArrayOfpositiveInteger</h3>
+    <a name="ArrayOfpositiveInteger"></a>
+    <p>
+      This is an array type of
+      <span class="pre"><span class="blue">positiveInteger</span></span
+      >.
+    </p>
+    <p>An positiveInteger array type</p>
+    <h3>Contactentries</h3>
+    <a name="Contactentries"></a>
+    <p>Handle Ids of contacts.</p>
+    <ul class="pre">
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">ownerc</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Id of contact handle.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">adminc</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Id of contact handle.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">techc</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Id of contact handle.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">zonec</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Id of contact handle.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">billingc</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Id of contact handle.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">onsitec</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Id of contact handle.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">generalrequest</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Id of contact handle.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">abusecontact</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Id of contact handle.</span
+        >
+      </li>
+    </ul>
+    <h3>Dnsrecord</h3>
+    <a name="Dnsrecord"></a>
+    <p>DNS record.</p>
+    <ul class="pre">
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">id</span> (nillable = <span class="blue">TRUE</span>,
+        minoccurs = <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Unique of the record. Leave id empty for new records.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">hostname</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Hostname of the record. Use '@' for root of domain.</span
+        >
+      </li>
+      <li>
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">recordtypes</span></a
+        >
+        <span class="bold">type</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Type of Record like A or MX.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">priority</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Required for MX records.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">destination</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Target of the record.</span
+        >
+      </li>
+      <li>
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">deleterecordflag</span></a
+        >
+        <span class="bold">deleterecord</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >TRUE when record will be deleted|boolean FALSE when record will
+          persist</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">state</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >State of the record. Read only, inputs are ignored.</span
+        >
+      </li>
+    </ul>
+    <h3>Dnsrecordset</h3>
+    <a name="Dnsrecordset"></a>
+    <p>DNS record set</p>
+    <ul class="pre">
+      <li>
+        <a href="#ArrayOfDnsrecord"
+          ><span class="blue">ArrayOfDnsrecord</span></a
+        >
+        <span class="bold">dnsrecords</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Array of DNS records for a zone.</span
+        >
+      </li>
+    </ul>
+    <h3>DnssecentriesObject</h3>
+    <a name="DnssecentriesObject"></a>
+    <p>Contains DnssecentryObject objects.</p>
+    <ul class="pre">
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry1</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry2</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry3</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry4</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry5</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry6</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry7</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry9</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry10</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry11</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry12</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry13</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry14</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry16</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry17</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry18</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry19</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentryObject"
+          ><span class="blue">DnssecentryObject</span></a
+        >
+        <span class="bold">dnssecentry20</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssec entry</span
+        >
+      </li>
+    </ul>
+    <h3>DnssecentryObject</h3>
+    <a name="DnssecentryObject"></a>
+    <p>
+      DNSSEC Entry<br />
+      Use infoDomain to find out which DNSSEC Type is needed.
+    </p>
+    <ul class="pre">
+      <li>
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">dnssectype</span></a
+        >
+        <span class="bold">dnssectype</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Type of the DNSSEC records to provide (digest or publickey).</span
+        >
+      </li>
+      <li>
+        <a href="../xsd/simpletypes.xsd"><span class="blue">publickey</span></a>
+        <span class="bold">publickey</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Public key of DNSKEY or digest key for digest keys. Base64 hash of
+          public dnssec key or ds record</span
+        >
+      </li>
+      <li>
+        <span class="blue">integer</span>
+        <span class="bold">flags</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Identifies Type of DNSKEY for example 257 or digesttype for digest
+          keys.</span
+        >
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">algorithm</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Code number for used algorithm</span
+        >
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">keytag</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal">Keytag</span>
+      </li>
+    </ul>
+    <h3>Dnszone</h3>
+    <a name="Dnszone"></a>
+    <p>DNS zone</p>
+    <ul class="pre">
+      <li>
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">domainname</span></a
+        >
+        <span class="bold">name</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Name of the zone - this is a domain name.</span
+        >
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">ttl</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >time-to-live Time in seconds a domain name is cached locally before
+          expiration and return to authoritative nameservers for updated
+          information. Recommendation: 3600 to 172800</span
+        >
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">serial</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >serial of zone. Readonly.</span
+        >
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">refresh</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Time in seconds a secondary name server waits to check for a new copy
+          of a DNS zone. Recommendation: 3600 to 14400</span
+        >
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">retry</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Time in seconds primary name server waits if an attempt to refresh by
+          a secondary name server failed. Recommendation: 900 to 3600</span
+        >
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">expire</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Time in seconds a secondary name server will hold a zone before it is
+          no longer considered authoritative. Recommendation: 592200 to
+          1776600</span
+        >
+      </li>
+      <li>
+        <span class="blue">boolean</span>
+        <span class="bold">dnssecstatus</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Status of DNSSSEC in this nameserver. Enabling DNSSEC possible every
+          24 hours.</span
+        >
+      </li>
+    </ul>
+    <h3>DomainObject</h3>
+    <a name="DomainObject"></a>
+    <p>Domain Object</p>
+    <ul class="pre">
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">domainname</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Name of the domain.</span
+        >
+      </li>
+      <li>
+        <a href="#Nameserverentries"
+          ><span class="blue">Nameserverentries</span></a
+        >
+        <span class="bold">nameserverentry</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >nameserserver1 to nameserver8 with Nameserverentry objects.</span
+        >
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">customernumber</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >customer number of reseller at netcup.</span
+        >
+      </li>
+      <li>
+        <a href="#Contactentries"><span class="blue">Contactentries</span></a>
+        <span class="bold">assignedcontacts</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Ids of the contact handles for each contact type.</span
+        >
+      </li>
+      <li>
+        <span class="blue">boolean</span>
+        <span class="bold">ownerchangerunning</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >TRUE when ownerchange has to be confirmed|boolean FALSE no
+          ownerchange is running.</span
+        >
+      </li>
+      <li>
+        <span class="blue">boolean</span>
+        <span class="bold">cancellationrunning</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >TRUE when cancellation has to be confirmed|boolean FALSE no
+          cancellation is running</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">nextbilling</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Date when domain is billed the next time in format YYYY-MM-DD</span
+        >
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">runtimemonths</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Runtime in months for this domain.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">lastupdate</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Information when the domain was updated last time at the registry.
+          Not avaliable for all registries.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">domaincreated</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Information when the domain was created at the registry. Not
+          avaliable for all registries.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">deletiondate</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Information when the domain is going to be deleted at the registry.
+          Not avaliable for all registries.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">authcode</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >AuthInfo code for this domain.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">state</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Domain can be inclusive or additional</span
+        >
+      </li>
+      <li>
+        <a href="#Registrycontacts"
+          ><span class="blue">Registrycontacts</span></a
+        >
+        <span class="bold">registrycontacts</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Handle Names like ABC12365445 or DENIC-415-R-1351 for each contact
+          type.</span
+        >
+      </li>
+      <li>
+        <span class="blue">float</span>
+        <span class="bold">priceperruntime</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Price for next billing of the domain.</span
+        >
+      </li>
+      <li>
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">dnssectype</span></a
+        >
+        <span class="bold">dnssectype</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Type of the DNSSEC records to provide. Valid values are
+          &quot;unknown&quot;, &quot;digest&quot;, &quot;publickey&quot; or
+          &quot;unavailable&quot;.</span
+        >
+      </li>
+      <li>
+        <a href="#DnssecentriesObject"
+          ><span class="blue">DnssecentriesObject</span></a
+        >
+        <span class="bold">dnssecentries</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Dnssecentries for this domain (optional).</span
+        >
+      </li>
+    </ul>
+    <h3>HandleObject</h3>
+    <a name="HandleObject"></a>
+    <p>Contact handle</p>
+    <ul class="pre">
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">id</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs = <span class="blue">1</span>)
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">type</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >type of the handle like organisation or person</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">name</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >name of the contact.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">organisation</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >organisation like company name.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">street</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal">street</span>
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">postalcode</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >postal code</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">city</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal">city</span>
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">countrycode</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >countrycode in ISO 3166 ALPHA-2 format. 2 char codes like CH for
+          Switzerland.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">telephone</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >telephone number</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">email</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >email address</span
+        >
+      </li>
+      <li>
+        <a href="#ArrayOfOptionalhandleattributes"
+          ><span class="blue">ArrayOfOptionalhandleattributes</span></a
+        >
+        <span class="bold">optionalhandleattributes</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Optional handle attributes in a array of type
+          Optionalhandleattribute</span
+        >
+      </li>
+      <li>
+        <span class="blue">boolean</span>
+        <span class="bold">assignedtodomain</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >is handle in use.</span
+        >
+      </li>
+    </ul>
+    <h3>Nameserverentries</h3>
+    <a name="Nameserverentries"></a>
+    <p>
+      Contains Nameserverentry objects.<br />
+      At least two different nameserver needed.
+    </p>
+    <ul class="pre">
+      <li>
+        <a href="#Nameserverentry"><span class="blue">Nameserverentry</span></a>
+        <span class="bold">nameserver1</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Object with information about nameserver.</span
+        >
+      </li>
+      <li>
+        <a href="#Nameserverentry"><span class="blue">Nameserverentry</span></a>
+        <span class="bold">nameserver2</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Object with information about nameserver.</span
+        >
+      </li>
+      <li>
+        <a href="#Nameserverentry"><span class="blue">Nameserverentry</span></a>
+        <span class="bold">nameserver3</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Object with information about nameserver.</span
+        >
+      </li>
+      <li>
+        <a href="#Nameserverentry"><span class="blue">Nameserverentry</span></a>
+        <span class="bold">nameserver4</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Object with information about nameserver.</span
+        >
+      </li>
+      <li>
+        <a href="#Nameserverentry"><span class="blue">Nameserverentry</span></a>
+        <span class="bold">nameserver5</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Object with information about nameserver.</span
+        >
+      </li>
+      <li>
+        <a href="#Nameserverentry"><span class="blue">Nameserverentry</span></a>
+        <span class="bold">nameserver6</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Object with information about nameserver.</span
+        >
+      </li>
+      <li>
+        <a href="#Nameserverentry"><span class="blue">Nameserverentry</span></a>
+        <span class="bold">nameserver7</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Object with information about nameserver.</span
+        >
+      </li>
+      <li>
+        <a href="#Nameserverentry"><span class="blue">Nameserverentry</span></a>
+        <span class="bold">nameserver8</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Object with information about nameserver.</span
+        >
+      </li>
+    </ul>
+    <h3>Nameserverentry</h3>
+    <a name="Nameserverentry"></a>
+    <p>
+      Nameserver entry.<br />
+      Hostname is mandatory.
+    </p>
+    <ul class="pre">
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">hostname</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Hostname of the nameserver</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">ipv4</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >IPv4 address</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">ipv6</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >IPv6 address</span
+        >
+      </li>
+    </ul>
+    <h3>Optionalhandleattribute</h3>
+    <a name="Optionalhandleattribute"></a>
+    <p>An optional handle attribute.</p>
+    <ul class="pre">
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">item</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >name of the optional attribute</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">value</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Value of optional attribute</span
+        >
+      </li>
+    </ul>
+    <h3>PollObject</h3>
+    <a name="PollObject"></a>
+    <p>Object that is returned after a poll command.</p>
+    <ul class="pre">
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">id</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal">id</span>
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">action</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal">action</span>
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">status</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal">status</span>
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">statuscode</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal">statuscode</span>
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">shortmessage</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >shortmessage</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">longmessage</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >longmessage</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">apikey</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal">apikey</span>
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">serverrequestid</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >serverrequestid</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">clientrequestid</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >clientrequestid</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">requestdatetime</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >requestdatetime</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">domainorhandle</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >domainorhandle</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">messageformat</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >messageformat</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">apisessionid</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >apisessionid</span
+        >
+      </li>
+    </ul>
+    <h3>Registrycontacts</h3>
+    <a name="Registrycontacts"></a>
+    <p>Handle Names like ABC12365445 or DENIC-415-R-1351</p>
+    <ul class="pre">
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">ownerc</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >name Name of handle at registry.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">adminc</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >name Name of handle at registry.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">techc</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >name Name of handle at registry.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">zonec</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >name Name of handle at registry.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">billingc</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >name Name of handle at registry.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">onsitec</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >name Name of handle at registry.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">generalrequest</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >name Name of handle at registry.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">abusecontact</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >name Name of handle at registry.</span
+        >
+      </li>
+    </ul>
+    <h3>Responsemessage</h3>
+    <a name="Responsemessage"></a>
+    <p>Response message of a request send to the api.</p>
+    <ul class="pre">
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">serverrequestid</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Unique ID for the request, created by the server</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">clientrequestid</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Unique ID for the request, created by the client</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">action</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Name of the function that was called.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">status</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Staus of the Message like &quot;error&quot;, &quot;started&quot;,
+          &quot;pending&quot;, &quot;warning&quot; or &quot;success&quot;.</span
+        >
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">statuscode</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Staus code of the Message like 2011.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">shortmessage</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Short message with information about the processing of the
+          messsage.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">longmessage</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Long message with information about the processing of the
+          messsage.</span
+        >
+      </li>
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">responsedata</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Data from the response like domain object.</span
+        >
+      </li>
+    </ul>
+    <h3>SessionObject</h3>
+    <a name="SessionObject"></a>
+    <p>Object that is returned after successful login.</p>
+    <ul class="pre">
+      <li>
+        <span class="blue">string</span>
+        <span class="bold">apisessionid</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Unique API session id created by login command.</span
+        >
+      </li>
+    </ul>
+    <h3>TopleveldomainObject</h3>
+    <a name="TopleveldomainObject"></a>
+    <p>Object that conaints information about a top-level domain.</p>
+    <ul class="pre">
+      <li>
+        <a href="../xsd/simpletypes.xsd"
+          ><span class="blue">topleveldomain</span></a
+        >
+        <span class="bold">topleveldomainname</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Name of the top-level domain.</span
+        >
+      </li>
+      <li>
+        <span class="blue">float</span>
+        <span class="bold">priceperruntime</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Price for next billing of the domain.</span
+        >
+      </li>
+      <li>
+        <span class="blue">float</span>
+        <span class="bold">setupfee</span> (nillable =
+        <span class="blue">FALSE</span>, minoccurs =
+        <span class="blue">1</span>, maxoccurs =
+        <span class="blue">1</span>)<br /><span class="normal"
+          >Set-up fee paid once.</span
+        >
+      </li>
+      <li>
+        <span class="blue">positiveInteger</span>
+        <span class="bold">runtimemonths</span> (nillable =
+        <span class="blue">TRUE</span>, minoccurs = <span class="blue">1</span>,
+        maxoccurs = <span class="blue">1</span>)<br /><span class="normal"
+          >Runtime in months for this domain.</span
+        >
+      </li>
+    </ul>
+    <hr />
+  </body>
+</html>
